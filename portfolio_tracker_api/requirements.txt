@@ -4,3 +4,5 @@ psycopg2-binary>=2.9,<3.0  # For PostgreSQL database
 django-cors-headers>=3.13,<4.0  # For handling CORS
 djangorestframework-simplejwt[crypto]
 django-oauth-toolkit
+django-allauth[socialaccount]
+gunicorn>=20.1.0
