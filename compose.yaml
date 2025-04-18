@@ -1,0 +1,37 @@
+services:
+  backend:
+    build: 
+      context: ./portfolio_tracker_api # Path to backend docker file
+    container_name: backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - "./portfolio_tracker_api/.env"
+    volumes:
+      - ./portfolio_tracker_api:/app
+    depends_on:
+      - db
+  db:
+    image: postgres:14
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=portfolio_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+  
+  nginx:
+    build:
+      context: . # context is root
+      dockerfile: ./nginx/dockerfile
+    container_name: nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+  
+volumes:
+  postgres_data:
+
+
+    
