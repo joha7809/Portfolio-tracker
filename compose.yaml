@@ -8,7 +8,7 @@ services:
     env_file:
       - "./portfolio_tracker_api/.env"
     volumes:
-      - ./portfolio_tracker_api/staticfiles:/app/staticfiles  # Correct static files mount
+      - static_volume:/app/staticfiles
       - ./portfolio_tracker_api:/app
     depends_on:
       - db
@@ -36,10 +36,11 @@ services:
     networks:
       - app-network
     volumes:
-      - ./portfolio_tracker_api/staticfiles:/app/staticfiles  # Correct static files mount
+      - static_volume:/app/staticfiles
   
 volumes:
   postgres_data:
+  static_volume:
 
 networks:
   app-network:
