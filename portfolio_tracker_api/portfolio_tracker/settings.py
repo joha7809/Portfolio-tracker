@@ -114,8 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-#Auth user model
-
+#Authentication settings
 AUTH_USER_MODEL = 'user.User'
 
 AUTHENTICATION_BACKENDS = [
@@ -125,6 +124,8 @@ AUTHENTICATION_BACKENDS = [
     # `allauth` specific authentication methods, such as login by email
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
+
+LOGIN_REDIRECT_URL = "/profile"
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
