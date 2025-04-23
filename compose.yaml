@@ -9,7 +9,6 @@ services:
       - "./portfolio_tracker_api/.env"
     volumes:
       - ./portfolio_tracker_api/staticfiles:/app/staticfiles  # Correct static files mount
-      
       - ./portfolio_tracker_api:/app
     depends_on:
       - db
