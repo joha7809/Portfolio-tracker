@@ -1,47 +1,64 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div class="app-layout">
+    <header>
+      <nav>
+        <ul>
+          <li><router-link to="/">Home</router-link></li>
+          <li><router-link to="/welcome">Welcome</router-link></li>
+          <li><router-link to="/profile">Profile</router-link></li>
+        </ul>
+      </nav>
+    </header>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+    <main>
+      <router-view />
+    </main>
+  </div>
 </template>
 
 <style scoped>
+/* Define the custom property at the root level */
+:root {
+  --main-bg-color: #ffae007a; /* Define the background color variable */
+}
+
+.app-layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 header {
-  line-height: 1.5;
+  background: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+  padding: 1rem 2rem;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+nav a {
+  color: #42b983;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+nav a.router-link-exact-active {
+  color: #2c3e50;
+  font-weight: bold;
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+main {
+  flex: 1;
+  padding: 2rem;
+  width: 100%;
+  margin: 0 auto;
+  background-color: var(--main-bg-color); /* Use the custom property */
 }
 </style>
