@@ -15,7 +15,9 @@ COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt
 
 #Collect static files for nginx
-RUN python manage.py collectstatic --noinput
+RUN python manage.py collectstatic --noinput && \
+    chmod -R 755 /app/staticfiles && \
+    chown -R www-data:www-data /app/staticfiles
 
 
 # Expose the port the app runs on
