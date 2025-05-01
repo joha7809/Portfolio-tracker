@@ -114,6 +114,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Allauth settings
+ACCOUNT_EMAIL_VERIFICATION = "none"  # Disable email verification
+
 #Authentication settings
 AUTH_USER_MODEL = 'user.User'
 
