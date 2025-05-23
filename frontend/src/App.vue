@@ -6,6 +6,7 @@
           <li><router-link to="/">Home</router-link></li>
           <li><router-link to="/welcome">Welcome</router-link></li>
           <li><router-link to="/profile">Profile</router-link></li>
+          <li><a href="/accounts/login">Login</a></li>
         </ul>
       </nav>
     </header>
@@ -19,7 +20,8 @@
 <style scoped>
 /* Define the custom property at the root level */
 :root {
-  --main-bg-color: #ffae007a; /* Define the background color variable */
+  --main-bg-color: #ffae007a;
+  /* Define the background color variable */
 }
 
 .app-layout {
@@ -33,6 +35,8 @@ header {
   border-bottom: 1px solid #ddd;
   padding: 1rem 2rem;
 }
+
+li {}
 
 nav ul {
   display: flex;
@@ -59,6 +63,7 @@ main {
   padding: 2rem;
   width: 100%;
   margin: 0 auto;
-  background-color: var(--main-bg-color); /* Use the custom property */
+  background-color: var(--main-bg-color);
+  /* Use the custom property */
 }
 </style>

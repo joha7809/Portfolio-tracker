@@ -1,63 +1,30 @@
-<!-- Vue page for viewing Profile Page  ---> 
+<!-- Vue page for viewing Profile Page  --->
 <script setup>
-const userName = "Testing"
-const userEmail = "test@email.com"
-var userBio = "This is a test bio"
+import { logout } from "@/assets/scripts/django_api_calls";
+import { userState } from "@/assets/scripts/userState";
+var userBio = "This is a test bio";
 </script>
 
 <template>
   <div class="profile">
     <h1>Profile</h1>
     <div class="profile-info">
-      <h2>{{ userName }}</h2>
-      <p>Email: {{ userEmail }}</p>
+      <h2>{{ userState.userName }}</h2>
+      <p>Email: {{ userState.userEmail }}</p>
+      <p>Username: {{ userState.userName }}</p>
+      <p>first name: {{ userState.firstName }}</p>
+      <p>last name: {{ userState.lastName }}</p>
       <p>Bio: {{ userBio }}</p>
     </div>
     <div class="profile-actions">
-      <button @click=logout>Logout</button>
-      <button @click=editProfile>Edit Profile</button>
+      <button @click="logout">Logout</button>
+      <button @click="editProfile">Edit Profile</button>
     </div>
   </div>
 </template>
 
 <!--edit profile button -->
-<script edit_profile>
-  // When logout pressed, post request to /api/logout for ending session
-  // csrf token should be passed
-  async function logout() {
-    try {
-      const response = await fetch('/api/logout/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRFToken': getCsrfToken(), // Ensure you have a function to retrieve the CSRF token
-        },
-      });
-
-      if (response.ok) {
-        alert('Logged out successfully');
-        // Redirect to login page or perform other actions
-        window.location.href = '/login';
-      } else {
-        const errorData = await response.json();
-        console.error('Logout failed:', errorData);
-        alert('Failed to log out. Please try again.');
-      }
-    } catch (error) {
-      console.error('Error during logout:', error);
-      alert('An error occurred. Please try again.');
-    }
-  }
-
-  function getCsrfToken() {
-    const cookieValue = document.cookie
-      .split('; ')
-      .find(row => row.startsWith('csrftoken='))
-      ?.split('=')[1];
-    return cookieValue || '';
-  }
-</script>
-
+<script edit_profile></script>
 
 <style scoped>
 .profile {
@@ -104,4 +71,3 @@ var userBio = "This is a test bio"
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
 }
 </style>
-

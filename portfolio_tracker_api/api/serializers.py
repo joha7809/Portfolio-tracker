@@ -16,7 +16,7 @@ class LoginSerializer(serializers.Serializer):
         # TODO: somehing
         if user:
             attrs["user"] = user
-            return super().validate(attrs)
+            return super().validate(attrs) 
 
         return super().validate(attrs)
 

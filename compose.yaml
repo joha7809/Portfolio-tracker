@@ -1,6 +1,6 @@
 services:
   backend:
-    build: 
+    build:
       context: ./portfolio_tracker_api # Path to backend docker file
     container_name: backend
     ports:
@@ -23,7 +23,7 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     networks:
       - app-network
-  
+
   nginx:
     build:
       context: . # context is root
@@ -37,7 +37,7 @@ services:
       - app-network
     volumes:
       - static_volume:/app/staticfiles
-  
+
 volumes:
   postgres_data:
   static_volume:
@@ -45,5 +45,3 @@ volumes:
 networks:
   app-network:
     driver: bridge
-
-    
