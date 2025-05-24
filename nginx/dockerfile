@@ -3,11 +3,11 @@ FROM node:24-slim AS build-stage
 WORKDIR /app
 
 # Copy package.json and package-lock.json to install dependencies
-COPY ../frontend/package*.json ./
+COPY ../portfolio-frontend/package*.json ./
 RUN npm install
 
 # Copy the rest of the application code
-COPY ../frontend ./
+COPY ../portfolio-frontend ./
 
 # Build the Vue.js application
 RUN npm run build

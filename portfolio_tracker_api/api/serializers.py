@@ -13,12 +13,10 @@ class LoginSerializer(serializers.Serializer):
     def validate(self, attrs):
         user = authenticate(username=attrs.get("username"),
                             password=attrs.get("password"))
-        # TODO: somehing
         if user:
             attrs["user"] = user
             return super().validate(attrs) 
-
-        return super().validate(attrs)
+        raise serializers.ValidationError("Invalid username or password")
 
 
 class UserSerializer(serializers.ModelSerializer):
